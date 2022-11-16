@@ -4,11 +4,14 @@ import TodoBox from "./TodoBox";
 
 import styled from "styled-components";
 
-const Todos: React.FC<{ items: Todo[] }> = (props) => {
+const Todos: React.FC<{
+  items: Todo[];
+  removeTodo: (text: string) => void;
+}> = ({ items, removeTodo }) => {
   return (
     <StyledTodos>
-      {props.items.map((item) => (
-        <TodoBox text={item.text} key={item.id} />
+      {items.map((item) => (
+        <TodoBox item={item} key={item.id} removeTodo={removeTodo} />
       ))}
     </StyledTodos>
   );

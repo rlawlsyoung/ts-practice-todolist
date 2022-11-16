@@ -11,10 +11,14 @@ function App() {
     setTodos([...todos, new Todo(todoText)]);
   };
 
+  const removeTodoHandler = (todoId: string): void => {
+    setTodos(todos.filter((todo) => todo.id !== todoId));
+  };
+
   return (
     <div>
       <NewTodo onAddTodo={addTodoHandler} />
-      <Todos items={todos} />
+      <Todos items={todos} removeTodo={removeTodoHandler} />
     </div>
   );
 }

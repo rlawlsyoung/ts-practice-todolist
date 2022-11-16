@@ -9,25 +9,21 @@ const NewTodo: React.FC<{ onAddTodo: (text: string) => void }> = (props) => {
 
     const inputValue = todoTextInputRef.current!.value;
 
-    if (inputValue.trim().length === 0) {
-      return;
-    }
+    if (!inputValue.trim().length) return;
 
     props.onAddTodo(inputValue);
   };
 
   return (
-    <StyledNewTodo>
-      <form onSubmit={submitHandler}>
-        <label>Todo text</label>
-        <input type="text" ref={todoTextInputRef} />
-        <button>Add Todo</button>
-      </form>
+    <StyledNewTodo onSubmit={submitHandler}>
+      <label>Todo text</label>
+      <input type="text" ref={todoTextInputRef} />
+      <button>Add Todo</button>
     </StyledNewTodo>
   );
 };
 
-const StyledNewTodo = styled.div`
+const StyledNewTodo = styled.form`
   width: 40rem;
   margin: 2rem auto;
 
