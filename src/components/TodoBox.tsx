@@ -26,6 +26,14 @@ const StyledTodoBox = styled.li`
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
   padding: 1rem;
   background-color: #f7f5ef;
+
+  button {
+    border: none;
+    background-color: #a7a5af;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+  }
 `;
 
 export default TodoBox;

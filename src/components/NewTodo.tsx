@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 const NewTodo: React.FC<{ onAddTodo: (text: string) => void }> = (props) => {
   const todoTextInputRef = useRef<HTMLInputElement>(null);
+  const todoFormRef = useRef<HTMLFormElement>(null);
 
   const submitHandler = (e: React.FormEvent) => {
     e.preventDefault();
@@ -12,10 +13,12 @@ const NewTodo: React.FC<{ onAddTodo: (text: string) => void }> = (props) => {
     if (!inputValue.trim().length) return;
 
     props.onAddTodo(inputValue);
+
+    todoFormRef.current?.reset();
   };
 
   return (
-    <StyledNewTodo onSubmit={submitHandler}>
+    <StyledNewTodo onSubmit={submitHandler} ref={todoFormRef}>
       <label>Todo text</label>
       <input type="text" ref={todoTextInputRef} />
       <button>Add Todo</button>
